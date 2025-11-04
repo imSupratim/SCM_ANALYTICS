@@ -16,6 +16,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+const API_BASE = "https://scm-analytics-backend.onrender.com/api";
+
 export default function Analytics() {
   const [revenue, setRevenue] = useState([]);
   const [inventory, setInventory] = useState([]);
@@ -26,11 +28,11 @@ export default function Analytics() {
 
   useEffect(() => {
     Promise.all([
-      axios.get("http://localhost:5000/api/revenue"),
-      axios.get("http://localhost:5000/api/inventory"),
-      axios.get("http://localhost:5000/api/orders"),
-      axios.get("http://localhost:5000/api/expenses"),
-      axios.get("http://localhost:5000/api/employees"),
+      axios.get(`${API_BASE}/revenue`),
+      axios.get(`${API_BASE}/inventory`),
+      axios.get(`${API_BASE}/orders`),
+      axios.get(`${API_BASE}/expenses`),
+      axios.get(`${API_BASE}/employees`),
     ]).then(([rev, inv, ord, exp, emp]) => {
       setRevenue(rev.data);
       setInventory(inv.data);

@@ -14,6 +14,10 @@ import {
   Cell,
 } from "recharts";
 
+
+
+const API_BASE = "https://scm-analytics-backend.onrender.com/api";
+
 export default function Reports() {
   const [orders, setOrders] = useState([]);
   const [expenses, setExpenses] = useState([]);
@@ -21,8 +25,8 @@ export default function Reports() {
 
   useEffect(() => {
     Promise.all([
-      axios.get("http://localhost:5000/api/orders"),
-      axios.get("http://localhost:5000/api/expenses"),
+      axios.get(`${API_BASE}/orders`),
+      axios.get(`${API_BASE}/expenses`),
     ]).then(([ordersRes, expensesRes]) => {
       setOrders(ordersRes.data);
       setExpenses(expensesRes.data);

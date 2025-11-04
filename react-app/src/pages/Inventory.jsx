@@ -14,12 +14,15 @@ import {
   Cell,
 } from "recharts";
 
+
+const API_BASE = "https://scm-analytics-backend.onrender.com/api";
+
 export default function Inventory() {
   const [inventory, setInventory] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/inventory").then((res) => {
+    axios.get(`${API_BASE}/inventory`).then((res) => {
       setInventory(res.data);
       setLoading(false);
     });

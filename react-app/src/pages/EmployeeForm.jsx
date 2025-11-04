@@ -7,7 +7,7 @@ export default function EmployeeForm() {
   const [form, setForm] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const API_BASE = "http://localhost:5000/api";
+ const API_BASE = "https://scm-analytics-backend.onrender.com/api";
 
   // ✅ Define field structures per dataset
   const datasetFields = {

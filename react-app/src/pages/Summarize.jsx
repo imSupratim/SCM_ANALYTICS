@@ -4,6 +4,8 @@ import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { FileDown } from "lucide-react";
 
+const API_BASE = "https://scm-analytics-backend.onrender.com/api";
+
 const Summary = () => {
   const [data, setData] = useState({
     inventory: [],
@@ -30,13 +32,13 @@ const Summary = () => {
           warehousesRes,
           expensesRes,
         ] = await Promise.all([
-          axios.get("http://localhost:5000/api/inventory"),
-          axios.get("http://localhost:5000/api/suppliers"),
-          axios.get("http://localhost:5000/api/revenue"),
-          axios.get("http://localhost:5000/api/orders"),
-          axios.get("http://localhost:5000/api/employees"),
-          axios.get("http://localhost:5000/api/warehouses"),
-          axios.get("http://localhost:5000/api/expenses"),
+          axios.get(`${API_BASE}/inventory`),
+          axios.get(`${API_BASE}/suppliers`),
+          axios.get(`${API_BASE}/revenue`),
+          axios.get(`${API_BASE}/orders`),
+          axios.get(`${API_BASE}/employees`),
+          axios.get(`${API_BASE}/warehouses`),
+          axios.get(`${API_BASE}/expenses`),
         ]);
 
         setData({

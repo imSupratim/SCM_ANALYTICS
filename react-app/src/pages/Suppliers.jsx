@@ -14,12 +14,15 @@ import {
   Cell,
 } from "recharts";
 
+
+const API_BASE = "https://scm-analytics-backend.onrender.com/api";
+
 export default function Suppliers() {
   const [suppliers, setSuppliers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/suppliers").then((res) => {
+    axios.get(`${API_BASE}/suppliers`).then((res) => {
       setSuppliers(res.data);
       setLoading(false);
     });

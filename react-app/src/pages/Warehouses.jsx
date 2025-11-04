@@ -14,12 +14,14 @@ import {
   Cell,
 } from "recharts";
 
+const API_BASE = "https://scm-analytics-api.onrender.com/api";
+
 export default function Warehouses() {
   const [warehouses, setWarehouses] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/warehouses").then((res) => {
+    axios.get(`${API_BASE}/warehouses`).then((res) => {
       setWarehouses(res.data);
       setLoading(false);
     });

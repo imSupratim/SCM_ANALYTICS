@@ -16,13 +16,16 @@ import {
   Cell,
 } from "recharts";
 
+
+const API_BASE = "https://scm-analytics-backend.onrender.com/api";
+
 export default function Dashboard() {
   const [revenue, setRevenue] = useState([]);
   const [loading, setLoading] = useState(true);
   const [chartType, setChartType] = useState("line"); // toggle between line/bar
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/revenue").then((res) => {
+    axios.get(`${API_BASE}/revenue`).then((res) => {
       setRevenue(res.data);
       setLoading(false);
     });
